@@ -1,0 +1,81 @@
+1) WithStreamAPI
+****************************************************
+package demo07_StreamAPI;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class WithStreamAPI {
+
+	public static void main(String[] args) {
+		List<Integer> numbers=Arrays.asList(1,3,8,9, 12,45,35,59,601,704);
+		//n-> n%2==0 is the definition of Predicate Interface test() method
+		List<Integer> EvenNos=numbers.stream().filter(n-> n%2==0).collect(Collectors.toList());
+		///One method is calling another method is known as Method Chaining,
+		List<Integer> OddNos= numbers.stream().filter(n-> n%2!=0).collect(Collectors.toList());
+		//Above filter() method will filter the Even, Odd numbers.
+		//Above we also use Lambda Method,
+		
+		System.out.println(EvenNos);
+		System.out.println(OddNos);
+		
+		
+		
+     
+		//Below we filter & store the numbers which are greater than 10
+	List<Integer> GreaterThan10= numbers
+			                  .stream()
+			                  .filter(n-> n>10) 
+			                  .collect(Collectors.toList());	
+	//Above is the another representation 
+		System.out.println(GreaterThan10);
+		
+		
+		
+
+	}
+
+}
+
+************************************************************
+2)  WithoutStreamAPI
+########################
+package demo07_StreamAPI;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class WithoutStreamAPI {
+
+	public static void main(String[] args) {
+		
+		List<Integer> numbers=Arrays.asList(1,12,45,35,59,601,704);
+		
+		//Here below I am creating 2 lists, one is storing Even numbers & other is storing Odd numbers,
+		
+		List<Integer> Oddnos= new ArrayList<Integer>();
+		List<Integer> Evennos= new ArrayList<Integer>();
+		
+		for(Integer i:numbers) {
+			if(i%2==0) {  // Here we are checking the condition 
+				Evennos.add(i);
+			}else {
+				Oddnos.add(i);
+			}	
+		}
+		System.out.println(Evennos);
+		System.out.println(Oddnos);
+	
+	}
+
+}
+
+
+
+
+
+
+
+
